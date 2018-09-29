@@ -7,7 +7,8 @@ import chineseMessages from './i18n/zh';
 import buildDataProvider from './dataProvider';
 // import buildGraphQLProvider from 'ra-data-graphql-simple';
 import Menu from './Menu';
-import { ProjectList, ProjectEdit, ProjectCreate } from './projects';
+import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
+import { ReportList, ReportEdit, ReportCreate, ReportShow } from './reports';
 
 
 const i18nProvider = locale => {
@@ -56,6 +57,14 @@ class App extends Component {
           list={ProjectList}
           edit={ProjectEdit}
           create={ProjectCreate}
+          show={ProjectShow}
+        />
+        <Resource
+          name="Report"
+          list={ReportList}
+          edit={ReportEdit}
+          create={ReportCreate}
+          show={ReportShow}
         />
       </Admin>
     );

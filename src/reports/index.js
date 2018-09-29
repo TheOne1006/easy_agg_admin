@@ -21,7 +21,7 @@ import { withStyles } from '@material-ui/core/styles';
 export const CategoryIcon = Icon;
 
 
-export const ProjectList = props => (
+export const ReportList = props => (
   <List {...props}>
     <Datagrid>
       <TextField label="name" source="name" style={{ padding: '0 12px 0 25px' }} />
@@ -33,31 +33,20 @@ export const ProjectList = props => (
   </List>
 );
 
-const ProjectTitle = translate(({ record, translate }) => (
+const ReportTitle = translate(({ record, translate }) => (
   <span>
-    {translate('resources.Project.name', { smart_count: 1 })} {
+    {translate('resources.Report.name', { smart_count: 1 })} {
       record.name
     }
-    </span>
+  </span>
 ));
 
-export const ProjectEdit = props => (
-  <Edit title={<ProjectTitle />} {...props}>
+export const ReportEdit = props => (
+  <Edit title={<ReportTitle />} {...props}>
     <SimpleForm>
       <DisabledInput label="Id" source="id" />
       <TextInput source="name" />
       <TextInput source="desc" />
-      <ReferenceManyField
-        reference="Report"
-        target="project._id"
-        label="resources.project.fields.reports"
-        perPage={5}
-      >
-        <Datagrid>
-          <TextField label="name" source="name" />
-          <TextField label="key" source="key" />
-        </Datagrid>
-      </ReferenceManyField>
     </SimpleForm>
   </Edit>
 );
@@ -68,7 +57,7 @@ const stylesCreate = {
 };
 
 
-export const ProjectCreate = withStyles(stylesCreate)(
+export const ReportCreate = withStyles(stylesCreate)(
   ({ classes, ...props }) => (
     <Create {...props}>
       <SimpleForm>
@@ -82,7 +71,7 @@ export const ProjectCreate = withStyles(stylesCreate)(
   )
 );
 
-export const ProjectShow = (props) => (
+export const ReportShow = (props) => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField label="name" source="name" />

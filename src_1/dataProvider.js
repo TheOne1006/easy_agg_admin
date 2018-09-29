@@ -84,8 +84,8 @@ const listCommandsQuery = gql`
 export default () =>
     buildApolloClient({
         clientOptions: {
-            // uri: 'https://api.graph.cool/simple/v1/cj2kl5gbc8w7a0130p3n4eg78',
-            uri: 'http://localhost:7001/graphql',
+            uri: 'https://api.graph.cool/simple/v1/cj2kl5gbc8w7a0130p3n4eg78',
+            // uri: 'http://localhost:7001/graphql',
         },
         buildQuery: introspectionResults => (raFetchType, resource, params) => {
 
