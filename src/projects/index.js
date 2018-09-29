@@ -56,6 +56,7 @@ export const ProjectEdit = props => (
         <Datagrid>
           <TextField label="name" source="name" />
           <TextField label="key" source="key" />
+          <EditButton />
         </Datagrid>
       </ReferenceManyField>
     </SimpleForm>
