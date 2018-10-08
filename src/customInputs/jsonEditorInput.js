@@ -15,9 +15,9 @@ import ReactJson from 'react-json-view'
 //   </div>);
 
 
-const ReactJSONEdit = ({ input }) => (
+const ReactJSONEdit = ({ input, isArray }) => (
   <ReactJson
-    src={input.value || {}}
+    src={input.value || (isArray ? [] : {})}
     onEdit={(e) => {
       // this.setState({ src: e.updated_src })
       input.onChange(e.updated_src);
@@ -35,15 +35,16 @@ const ReactJSONEdit = ({ input }) => (
 
 
 class JsonEditorInput extends Component {
+
   render() {
-    const { label, source, translate} = this.props;
+    const { label, source, translate, isArray } = this.props;
 
     return (
       <div style={{ padding: '15px 0px' }} >
         <label>
           {translate(label)}:
         </label>
-        <Field name={source} component={ReactJSONEdit} />
+        <Field name={source} component={ReactJSONEdit} isArray={isArray} />
       </div>
     );
   }

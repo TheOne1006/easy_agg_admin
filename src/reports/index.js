@@ -27,6 +27,7 @@ import {
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
 
+import JsonEditorInput from '../customInputs/jsonEditorInput';
 import JsonViewField from '../customFields/jsonPreviewField';
 
 // import ProjectReferenceField from '../referenceFields/projectField';
@@ -128,11 +129,15 @@ export const ReportCreate = withStyles(stylesCreate)(
           source="name"
           options={{ fullWidth: true }}
         />
+        <TextInput source="key" />
         <TextInput source="desc" options={{ fullWidth: true }} />
 
         <ReferenceInput source="projectId" reference="Project">
           <SelectInput optionText="name" />
         </ReferenceInput>
+
+        <JsonEditorInput source="dataMappers" label="resources.Report.fields.dataMappers" isArray />
+
 
         <ReferenceArrayInput source="includeStrategies" reference="Strategy">
           <SelectArrayInput optionText="name" />

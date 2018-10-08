@@ -17,6 +17,7 @@ import {
     ReferenceInput,
     ReferenceField,
     SelectInput,
+    ArrayInput,
 } from 'react-admin';
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
@@ -65,7 +66,10 @@ export const StrategyEdit = props => (
             <JsonEditorInput source="matchFields" label="resources.Strategy.fields.matchFields" />
 
             <TextInput source="uniqueField" />
-            <TextInput source="intervalType" />
+            <SelectInput source="intervalType" choices={[
+                { id: 'day', name: '天' },
+                { id: 'hour', name: '小时' },
+            ]} />
             <TextInput source="incField" />
             <TextInput source="groupFields" />
             <TextInput source="sumField" />
@@ -100,12 +104,17 @@ export const StrategyCreate = withStyles(stylesCreate)(
                     <SelectInput optionText="name" />
                 </ReferenceInput>
 
-                <JsonEditorInput source="matchFields" />
+                <JsonEditorInput source="matchFields" label="resources.Strategy.fields.matchFields" />
 
                 <TextInput source="uniqueField" />
-                <TextInput source="intervalType" />
+                <SelectInput source="intervalType" choices={[
+                    { id: 'day', name: '天' },
+                    { id: 'hour', name: '小时' },
+                ]} />
                 <TextInput source="incField" />
-                <TextInput source="groupFields" />
+                
+                <JsonEditorInput source="groupFields" label="resources.Strategy.fields.groupFields" isArray />
+
                 <TextInput source="sumField" />
                 <LongTextInput source="desc" options={{ fullWidth: true }} />
             </SimpleForm>
