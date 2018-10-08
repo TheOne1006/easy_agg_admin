@@ -18,9 +18,15 @@ import {
   ReferenceField,
   AutocompleteInput,
   Filter,
+  TabbedShowLayout,
+  Tab,
+  ReferenceArrayInput, 
+  SelectArrayInput,
 } from 'react-admin';
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
+
+import JsonViewField from '../customFields/jsonPreviewField';
 
 // import ProjectReferenceField from '../referenceFields/projectField';
 
@@ -51,13 +57,13 @@ export const ReportList = props => (
     filters={<ReportFilter />}
   >
     <Datagrid>
-      <TextField label="name" source="name" style={{ padding: '0 12px 0 25px' }} />
-      <TextField label="desc" source="desc" options={{ multiLine: true }} />
-      <ReferenceField label="Project" source="projectId" reference="Project" >
+      <TextField source="name" style={{ padding: '0 12px 0 25px' }} />
+      <TextField source="desc" options={{ multiLine: true }} />
+      <ReferenceField label="resources.Report.fields.belongProject" source="projectId" reference="Project" >
         <TextField source="name" />
       </ReferenceField>
-      <DateField label="createAt" source="createAt" />
-      <DateField label="updateAt" source="updateAt" />
+      <DateField source="createAt" />
+      <DateField source="updateAt" />
       <EditButton />
     </Datagrid>
   </List>
@@ -71,12 +77,38 @@ const ReportTitle = translate(({ record, translate }) => (
   </span>
 ));
 
+// 过滤策略数据 (根据所属的项目)
+const FilterStrategiesReferenceArrayInput = props => {
+  const record = props.record;
+
+  return (
+    <ReferenceArrayInput
+      source="includeStrategies"
+      reference="Strategy"
+      {...props}
+      filter={{ projectId: record.projectId }}
+      options={{ fullWidth: true }}
+    >
+      <SelectArrayInput optionText="name" />
+    </ReferenceArrayInput>
+  );
+}
+
 export const ReportEdit = props => (
   <Edit title={<ReportTitle />} {...props}>
     <SimpleForm>
-      <DisabledInput label="Id" source="id" />
+      <DisabledInput source="id" />
+
+      <ReferenceField label="resources.Report.fields.belongProject" source="projectId" reference="Project" >
+        <TextField source="name" />
+      </ReferenceField>
+
       <TextInput source="name" />
+      <TextInput source="key" />
       <TextInput source="desc" />
+
+      <FilterStrategiesReferenceArrayInput />
+
     </SimpleForm>
   </Edit>
 );
@@ -96,6 +128,10 @@ export const ReportCreate = withStyles(stylesCreate)(
           options={{ fullWidth: true }}
         />
         <TextInput source="desc" options={{ fullWidth: true }} />
+
+        <ReferenceArrayInput source="includeStrategies" reference="Strategy">
+          <SelectArrayInput optionText="name" />
+        </ReferenceArrayInput>
       </SimpleForm>
     </Create>
   )
@@ -103,11 +139,16 @@ export const ReportCreate = withStyles(stylesCreate)(
 
 export const ReportShow = (props) => (
   <Show {...props}>
-    <SimpleShowLayout>
-      <TextField label="name" source="name" />
-      <TextField label="desc" source="desc" />
-      <DateField label="createAt" source="createAt" />
-      <DateField label="updateAt" source="updateAt" />
-    </SimpleShowLayout>
+    <TabbedShowLayout>
+      <Tab label="self">
+        <TextField label="name" source="name" />
+        <TextField label="desc" source="desc" />
+        <DateField label="createAt" source="createAt" />
+        <DateField label="updateAt" source="updateAt" />
+      </Tab>
+      <Tab label="exportData" path="exportData">
+        <JsonViewField source="exportData" />
+      </Tab>
+    </TabbedShowLayout>
   </Show>
 );

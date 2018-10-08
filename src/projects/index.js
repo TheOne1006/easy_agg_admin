@@ -14,6 +14,8 @@ import {
   Show,
   SimpleShowLayout,
   ReferenceManyField,
+  TabbedShowLayout, 
+  Tab,
 } from 'react-admin';
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
@@ -24,10 +26,10 @@ export const CategoryIcon = Icon;
 export const ProjectList = props => (
   <List {...props}>
     <Datagrid>
-      <TextField label="name" source="name" style={{ padding: '0 12px 0 25px' }} />
-      <TextField label="desc" source="desc" options={{ multiLine: true }} />
-      <DateField label="createAt" source="createAt" />
-      <DateField label="updateAt" source="updateAt" />
+      <TextField source="name" style={{ padding: '0 12px 0 25px' }} />
+      <TextField source="desc" options={{ multiLine: true }} />
+      <DateField source="createAt" />
+      <DateField source="updateAt" />
       <EditButton />
     </Datagrid>
   </List>
@@ -85,11 +87,41 @@ export const ProjectCreate = withStyles(stylesCreate)(
 
 export const ProjectShow = (props) => (
   <Show {...props}>
-    <SimpleShowLayout>
-      <TextField label="name" source="name" />
-      <TextField label="desc" source="desc" />
-      <DateField label="createAt" source="createAt" />
-      <DateField label="updateAt" source="updateAt" />
-    </SimpleShowLayout>
+    <TabbedShowLayout>
+      <Tab label="summary">
+        <TextField label="name" source="name" />
+        <TextField label="desc" source="desc" />
+        <DateField label="createAt" source="createAt" />
+        <DateField label="updateAt" source="updateAt" />
+      </Tab>
+      <Tab label="report" path="report">
+        <ReferenceManyField
+          reference="Report"
+          target="project._id"
+          label="resources.Project.fields.reports"
+          perPage={5}
+        >
+          <Datagrid>
+            <TextField label="name" source="name" />
+            <TextField label="key" source="key" />
+            <EditButton />
+          </Datagrid>
+        </ReferenceManyField>
+      </Tab>
+      <Tab label="Strategy" path="Strategy">
+        <ReferenceManyField
+          reference="Strategy"
+          target="project._id"
+          label="resources.Project.fields.strategies"
+          perPage={5}
+        >
+          <Datagrid>
+            <TextField label="name" source="name" />
+            <TextField label="key" source="key" />
+            <EditButton />
+          </Datagrid>
+        </ReferenceManyField>
+      </Tab>
+    </TabbedShowLayout>
   </Show>
 );

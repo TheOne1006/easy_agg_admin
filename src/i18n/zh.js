@@ -31,81 +31,51 @@ export default {
     },
   },
   resources: {
-    Customer: {
-      name: 'Customer |||| Customers',
+    Report: {
+      name: '报表',
       fields: {
-        commands: 'Orders',
-        groups: 'Segments',
-        lastSeen_gte: 'Visited Since',
-        name: 'Name',
-        latestPurchase: 'Latest Purchase',
-        hasOrdered: 'Has Ordered',
-        hasNewsletter: 'Has Newsletter',
-        totalSpent: 'Total spent',
-      },
-      tabs: {
-        identity: 'Identity',
-        address: 'Address',
-        orders: 'Orders',
-        reviews: 'Reviews',
-        stats: 'Stats',
-      },
-      page: {
-        delete: 'Delete Customer',
-      },
-    },
-    Command: {
-      name: 'Order |||| Orders',
-      fields: {
-        basket: {
-          delivery: 'Delivery',
-          reference: 'Reference',
-          quantity: 'Quantity',
-          sum: 'Sum',
-          tax_rate: 'Tax Rate',
-          total: 'Total',
-          unit_price: 'Unit Price',
-        },
-        'customer.id': 'Customer',
-        date_gte: 'Passed Since',
-        date_lte: 'Passed Before',
-        total_gte: 'Min amount',
-        status: 'Status',
-        returned: 'Returned',
-      },
+        id: 'ID',
+        name: '报表名称',
+        key: '报表唯一值',
+        desc: '描述',
+        createAt: '创建时间',
+        updateAt: '更新时间',
+        belongProject: '所属项目',
+        includeStrategies: '包含策略',
+      }
     },
     Project: {
       name: '项目',
+      fields: {
+        id: 'ID',
+        name: '项目名称',
+        desc: '项目描述',
+        createAt: '创建时间',
+        updateAt: '更新时间',
+        reports: '相关报表'
+      }
     },
     StrategyType: {
-      name: '策略类型'
+      name: '策略类型',
+      fields: {
+        id: 'ID',
+        name: '策略类型名称',
+        key: '策略类型唯一值',
+        desc: '描述',
+        createAt: '创建时间',
+        updateAt: '更新时间'
+      }
     },
     Strategy: {
-      name: '策略'
-    },
-    Product: {
-      name: 'Poster |||| Posters',
+      name: '策略',
       fields: {
-        'category.id': 'Category',
-        height_gte: 'Min height',
-        height_lte: 'Max height',
-        height: 'Height',
-        image: 'Image',
-        price: 'Price',
-        reference: 'Reference',
-        stock_lte: 'Low Stock',
-        stock: 'Stock',
-        thumbnail: 'Thumbnail',
-        width_gte: 'Min width',
-        width_lte: 'mx_width',
-        width: 'Width',
-      },
-      tabs: {
-        image: 'Image',
-        details: 'Details',
-        description: 'Description',
-        reviews: 'Reviews',
-      },
+        id: 'ID',
+        name: '策略名称',
+        key: '策略唯一值',
+        desc: '描述',
+        createAt: '创建时间',
+        updateAt: '更新时间'
+      }
     },
     Category: {
       name: 'Category |||| Categories',

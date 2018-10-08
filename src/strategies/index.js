@@ -24,11 +24,11 @@ export const CategoryIcon = Icon;
 export const StrategyList = props => (
     <List {...props}>
         <Datagrid>
-            <TextField label="name" source="name" style={{ padding: '0 12px 0 25px' }} />
-            <TextField label="key" source="key" />
-            <TextField label="desc" source="desc" options={{ multiLine: true }} />
-            <DateField label="createAt" source="createAt" />
-            <DateField label="updateAt" source="updateAt" />
+            <TextField source="name" />
+            <TextField source="key" />
+            <TextField source="desc" options={{ multiLine: true }} />
+            <DateField source="createAt" />
+            <DateField source="updateAt" />
             <EditButton />
         </Datagrid>
     </List>
@@ -45,7 +45,7 @@ const StrategyTitle = translate(({ record, translate }) => (
 export const StrategyEdit = props => (
     <Edit title={<StrategyTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput label="Id" source="id" />
+            <DisabledInput source="id" />
             <TextInput source="key" />
             <TextInput source="name" />
             <LongTextInput source="desc" />
@@ -77,10 +77,11 @@ export const StrategyCreate = withStyles(stylesCreate)(
 export const StrategyShow = (props) => (
     <Show {...props}>
         <SimpleShowLayout>
-            <TextField label="name" source="name" />
-            <TextField label="desc" source="desc" />
-            <DateField label="createAt" source="createAt" />
-            <DateField label="updateAt" source="updateAt" />
+            <TextField source="id" />
+            <TextField source="name" />
+            <TextField source="desc" />
+            <DateField source="createAt" />
+            <DateField source="updateAt" />
         </SimpleShowLayout>
     </Show>
 );

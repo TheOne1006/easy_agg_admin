@@ -24,11 +24,11 @@ export const CategoryIcon = Icon;
 export const StrategyTypeList = props => (
     <List {...props}>
         <Datagrid>
-            <TextField label="name" source="name" style={{ padding: '0 12px 0 25px' }} />
-            <TextField label="key" source="key" />
-            <TextField label="desc" source="desc" options={{ multiLine: true }} />
-            <DateField label="createAt" source="createAt" />
-            <DateField label="updateAt" source="updateAt" />
+            <TextField source="name" />
+            <TextField source="key" />
+            <TextField source="desc" options={{ multiLine: true }} />
+            <DateField source="createAt" />
+            <DateField source="updateAt" />
             <EditButton />
         </Datagrid>
     </List>
