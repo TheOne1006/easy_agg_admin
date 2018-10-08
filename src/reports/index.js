@@ -20,6 +20,7 @@ import {
   Filter,
   TabbedShowLayout,
   Tab,
+  SelectInput,
   ReferenceArrayInput, 
   SelectArrayInput,
 } from 'react-admin';
@@ -128,6 +129,10 @@ export const ReportCreate = withStyles(stylesCreate)(
           options={{ fullWidth: true }}
         />
         <TextInput source="desc" options={{ fullWidth: true }} />
+
+        <ReferenceInput source="projectId" reference="Project">
+          <SelectInput optionText="name" />
+        </ReferenceInput>
 
         <ReferenceArrayInput source="includeStrategies" reference="Strategy">
           <SelectArrayInput optionText="name" />

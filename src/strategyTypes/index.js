@@ -46,7 +46,7 @@ export const StrategyTypeEdit = props => (
     <Edit title={<StrategyTypeTitle />} {...props}>
         <SimpleForm>
             <DisabledInput label="Id" source="id" />
-            <TextInput source="key" />
+            <DisabledInput source="key" />
             <TextInput source="name" />
             <LongTextInput source="desc" />
         </SimpleForm>

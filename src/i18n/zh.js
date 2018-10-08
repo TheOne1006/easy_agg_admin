@@ -72,7 +72,16 @@ export default {
         id: 'ID',
         name: '策略名称',
         key: '策略唯一值',
+        scope: '作用域',
+        typeId: '策略类型',
+        projectId: '所属项目',
         desc: '描述',
+        matchFields: '匹配字段信息',
+        uniqueField: '唯一值判断字段',
+        incField: '增加值字段',
+        intervalType: '计时类型',
+        groupFields: '分组字段',
+        sumField: '求和字段',
         createAt: '创建时间',
         updateAt: '更新时间'
       }

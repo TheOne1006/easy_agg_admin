@@ -13,10 +13,15 @@ import {
     TextInput,
     Show,
     SimpleShowLayout,
-    LongTextInput,
+    LongTextInput, 
+    ReferenceInput,
+    ReferenceField,
+    SelectInput,
 } from 'react-admin';
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
+
+import JsonEditorInput from '../customInputs/jsonEditorInput';
 
 export const CategoryIcon = Icon;
 
@@ -46,9 +51,26 @@ export const StrategyEdit = props => (
     <Edit title={<StrategyTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="key" />
-            <TextInput source="name" />
-            <LongTextInput source="desc" />
+            <DisabledInput source="key" />
+
+            <TextInput source="scope" />
+
+            <ReferenceField source="typeId" reference="StrategyType">
+                <TextField source="name"/>
+            </ReferenceField>
+
+            <ReferenceField source="projectId" reference="Project">
+                <TextField source="name" />
+            </ReferenceField>
+            <JsonEditorInput source="matchFields" label="resources.Strategy.fields.matchFields" />
+
+            <TextInput source="uniqueField" />
+            <TextInput source="intervalType" />
+            <TextInput source="incField" />
+            <TextInput source="groupFields" />
+            <TextInput source="sumField" />
+
+            <LongTextInput source="desc" options={{ fullWidth: true }} />
         </SimpleForm>
     </Edit>
 );
@@ -63,11 +85,28 @@ export const StrategyCreate = withStyles(stylesCreate)(
     ({ classes, ...props }) => (
         <Create {...props}>
             <SimpleForm>
-                <TextInput source="key" />
                 <TextInput
                     source="name"
                     options={{ fullWidth: true }}
                 />
+                <TextInput source="key" />
+                <TextInput source="scope" />
+
+                <ReferenceInput source="typeId" reference="StrategyType">
+                    <SelectInput optionText="name" />
+                </ReferenceInput>
+
+                <ReferenceInput source="projectId" reference="Project">
+                    <SelectInput optionText="name" />
+                </ReferenceInput>
+
+                <JsonEditorInput source="matchFields" />
+
+                <TextInput source="uniqueField" />
+                <TextInput source="intervalType" />
+                <TextInput source="incField" />
+                <TextInput source="groupFields" />
+                <TextInput source="sumField" />
                 <LongTextInput source="desc" options={{ fullWidth: true }} />
             </SimpleForm>
         </Create>
