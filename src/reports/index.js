@@ -14,18 +14,48 @@ import {
   Show,
   SimpleShowLayout,
   ReferenceManyField,
+  ReferenceInput,
+  ReferenceField,
+  AutocompleteInput,
+  Filter,
 } from 'react-admin';
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
 
+// import ProjectReferenceField from '../referenceFields/projectField';
+
 export const CategoryIcon = Icon;
 
 
+const filterStyles = {
+  status: { width: 150 },
+};
+
+export const ReportFilter = withStyles(filterStyles)(
+  ({ classes, ...props }) => (
+    <Filter {...props}>
+      <ReferenceInput source="projectId" reference="Project" alwaysOn>
+        <AutocompleteInput
+          optionText={project =>
+            `${project.name}`
+          }
+        />
+      </ReferenceInput>
+    </Filter>
+  )
+);
+
 export const ReportList = props => (
-  <List {...props}>
+  <List 
+    {...props}
+    filters={<ReportFilter />}
+  >
     <Datagrid>
       <TextField label="name" source="name" style={{ padding: '0 12px 0 25px' }} />
       <TextField label="desc" source="desc" options={{ multiLine: true }} />
+      <ReferenceField label="Project" source="projectId" reference="Project" >
+        <TextField source="name" />
+      </ReferenceField>
       <DateField label="createAt" source="createAt" />
       <DateField label="updateAt" source="updateAt" />
       <EditButton />

@@ -15,6 +15,7 @@ const items = [
   { name: 'Project', icon: <LabelIcon /> },
   { name: 'StrategyType', icon: <LabelIcon /> },
   { name: 'Strategy', icon: <LabelIcon /> },
+  { name: 'Report', icon: <LabelIcon /> },
 ];
 
 const styles = {

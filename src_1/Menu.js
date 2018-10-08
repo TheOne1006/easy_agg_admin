@@ -18,7 +18,6 @@ import { CategoryIcon } from './categories';
 import { ReviewIcon } from './reviews';
 
 const items = [
-    { name: 'Project', icon: <VisitorIcon /> },
     { name: 'Customer', icon: <VisitorIcon /> },
     { name: 'Segment', icon: <LabelIcon /> },
     { name: 'Command', icon: <CommandIcon /> },
