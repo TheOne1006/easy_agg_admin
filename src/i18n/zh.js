@@ -77,6 +77,12 @@ export default {
     Project: {
       name: '项目',
     },
+    StrategyType: {
+      name: '策略类型'
+    },
+    Strategy: {
+      name: '策略'
+    },
     Product: {
       name: 'Poster |||| Posters',
       fields: {

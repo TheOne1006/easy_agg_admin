@@ -9,6 +9,8 @@ export default () =>
     },
     buildQuery: introspectionResults => (raFetchType, resource, params) => {
 
+      console.log(introspectionResults);
+
       const builtQuery = buildQuery(introspectionResults)(
         raFetchType,
         resource,

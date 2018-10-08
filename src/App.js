@@ -9,6 +9,8 @@ import buildDataProvider from './dataProvider';
 import Menu from './Menu';
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import { ReportList, ReportEdit, ReportCreate, ReportShow } from './reports';
+import { StrategyTypeList, StrategyTypeEdit, StrategyTypeCreate, StrategyTypeShow } from './strategyTypes';
+import { StrategyList, StrategyEdit, StrategyCreate, StrategyShow } from './strategies';
 
 
 const i18nProvider = locale => {
@@ -65,6 +67,20 @@ class App extends Component {
           edit={ReportEdit}
           create={ReportCreate}
           show={ReportShow}
+        />
+        <Resource
+          name="StrategyType"
+          list={StrategyTypeList}
+          edit={StrategyTypeEdit}
+          create={StrategyTypeCreate}
+          show={StrategyTypeShow}
+        />
+        <Resource
+          name="Strategy"
+          list={StrategyList}
+          edit={StrategyEdit}
+          create={StrategyCreate}
+          show={StrategyShow}
         />
       </Admin>
     );

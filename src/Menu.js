@@ -13,6 +13,8 @@ import { withRouter } from 'react-router-dom';
 
 const items = [
   { name: 'Project', icon: <LabelIcon /> },
+  { name: 'StrategyType', icon: <LabelIcon /> },
+  { name: 'Strategy', icon: <LabelIcon /> },
 ];
 
 const styles = {
