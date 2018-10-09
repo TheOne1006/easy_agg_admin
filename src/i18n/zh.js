@@ -40,7 +40,10 @@ export default {
         desc: '描述',
         createAt: '创建时间',
         updateAt: '更新时间',
-        belongProject: '所属项目',
+        projectId: '所属项目',
+        intervalType: '计时类型',
+        scopeDay: '区间天数',
+        scopeHour: '区间时段',
         includeStrategies: '包含策略',
       }
     },
@@ -63,7 +66,7 @@ export default {
         key: '策略类型唯一值',
         desc: '描述',
         createAt: '创建时间',
-        updateAt: '更新时间'
+        updateAt: '更新时间',
       }
     },
     Strategy: {

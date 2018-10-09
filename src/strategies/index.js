@@ -17,12 +17,12 @@ import {
     ReferenceInput,
     ReferenceField,
     SelectInput,
-    ArrayInput,
 } from 'react-admin';
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
 
 import JsonEditorInput from '../customInputs/jsonEditorInput';
+import ChipInput from '../customInputs/ChipInput';
 
 export const CategoryIcon = Icon;
 
@@ -71,7 +71,9 @@ export const StrategyEdit = props => (
                 { id: 'hour', name: '小时' },
             ]} />
             <TextInput source="incField" />
-            <TextInput source="groupFields" />
+
+            <ChipInput source="groupFields" label="resources.Strategy.fields.groupFields" />
+
             <TextInput source="sumField" />
 
             <LongTextInput source="desc" options={{ fullWidth: true }} />
@@ -113,7 +115,7 @@ export const StrategyCreate = withStyles(stylesCreate)(
                 ]} />
                 <TextInput source="incField" />
                 
-                <JsonEditorInput source="groupFields" label="resources.Strategy.fields.groupFields" isArray />
+                <ChipInput source="groupFields" label="resources.Strategy.fields.groupFields" />
 
                 <TextInput source="sumField" />
                 <LongTextInput source="desc" options={{ fullWidth: true }} />

@@ -11,9 +11,8 @@ import {
   SimpleForm,
   TextField,
   TextInput,
+  NumberInput,
   Show,
-  SimpleShowLayout,
-  ReferenceManyField,
   ReferenceInput,
   ReferenceField,
   AutocompleteInput,
@@ -61,7 +60,7 @@ export const ReportList = props => (
     <Datagrid>
       <TextField source="name" style={{ padding: '0 12px 0 25px' }} />
       <TextField source="desc" options={{ multiLine: true }} />
-      <ReferenceField label="resources.Report.fields.belongProject" source="projectId" reference="Project" >
+      <ReferenceField source="projectId" reference="Project" >
         <TextField source="name" />
       </ReferenceField>
       <DateField source="createAt" />
@@ -100,16 +99,28 @@ export const ReportEdit = props => (
   <Edit title={<ReportTitle />} {...props}>
     <SimpleForm>
       <DisabledInput source="id" />
+      <DisabledInput source="key" />
 
-      <ReferenceField label="resources.Report.fields.belongProject" source="projectId" reference="Project" >
+      <ReferenceField label="resources.Report.fields.projectId" source="projectId" reference="Project" >
         <TextField source="name" />
       </ReferenceField>
 
       <TextInput source="name" />
-      <TextInput source="key" />
       <TextInput source="desc" />
 
+      <JsonEditorInput source="dataMappers" label="resources.Report.fields.dataMappers" isArray />
+
+
       <FilterStrategiesReferenceArrayInput />
+
+      <NumberInput source="scopeDay" />
+      <NumberInput source="scopeHour" />
+
+      <SelectInput source="intervalType" choices={[
+        { id: 'day', name: '天' },
+        { id: 'hour', name: '小时' },
+      ]} />
+      
 
     </SimpleForm>
   </Edit>
@@ -138,10 +149,17 @@ export const ReportCreate = withStyles(stylesCreate)(
 
         <JsonEditorInput source="dataMappers" label="resources.Report.fields.dataMappers" isArray />
 
+        <FilterStrategiesReferenceArrayInput />
 
-        <ReferenceArrayInput source="includeStrategies" reference="Strategy">
-          <SelectArrayInput optionText="name" />
-        </ReferenceArrayInput>
+        <NumberInput source="scopeDay" />
+        <NumberInput source="scopeHour" />
+
+        <SelectInput source="intervalType" choices={[
+          { id: 'day', name: '天' },
+          { id: 'hour', name: '小时' },
+        ]} />
+
+
       </SimpleForm>
     </Create>
   )

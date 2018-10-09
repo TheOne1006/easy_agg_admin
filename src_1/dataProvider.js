@@ -89,11 +89,6 @@ export default () =>
         },
         buildQuery: introspectionResults => (raFetchType, resource, params) => {
 
-            // console.log('introspectionResults');
-            // console.log(introspectionResults);
-            // console.log(raFetchType);
-            // console.log(resource);
-            // console.log(params);
             const builtQuery = buildQuery(introspectionResults)(
                 raFetchType,
                 resource,

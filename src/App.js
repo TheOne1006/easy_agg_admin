@@ -44,8 +44,6 @@ class App extends Component {
       );
     }
 
-    console.log(dataProvider);
-
     return (
       <Admin
         title="后台管理"

@@ -12,7 +12,6 @@ import {
   TextField,
   TextInput,
   Show,
-  SimpleShowLayout,
   ReferenceManyField,
   TabbedShowLayout, 
   Tab,
