@@ -110,6 +110,8 @@ export default () =>
                 }
             }
 
+          console.log(builtQuery);
+
             return builtQuery;
         },
     });

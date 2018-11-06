@@ -1,5 +1,6 @@
 import buildApolloClient, { buildQuery } from 'ra-data-graphcool';
 
+// import gql from 'graphql-tag';
 
 export default () =>
   buildApolloClient({
@@ -9,26 +10,31 @@ export default () =>
     },
     buildQuery: introspectionResults => (raFetchType, resource, params) => {
 
+      // remove exportData
+      if (raFetchType === 'UPDATE' && resource === 'Report') {
+        delete params.data.exportData;
+      }
+
       const builtQuery = buildQuery(introspectionResults)(
         raFetchType,
         resource,
         params
       );
 
-      if (resource === 'Command') {
-        if (raFetchType === 'GET_ONE') {
-          return {
-            ...builtQuery,
-          };
-        }
-        if (raFetchType === 'GET_LIST') {
-          const t = {
-            ...builtQuery,
-          };
+      // if (resource === 'Command') {
+      //   if (raFetchType === 'GET_ONE') {
+      //     return {
+      //       ...builtQuery,
+      //     };
+      //   }
+      //   if (raFetchType === 'GET_LIST') {
+      //     const t = {
+      //       ...builtQuery,
+      //     };
 
-          return t;
-        }
-      }
+      //     return t;
+      //   }
+      // }
 
       return builtQuery;
     },
