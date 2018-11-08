@@ -81,7 +81,11 @@ const ReportTitle = translate(({ record, translate }) => (
 // 过滤策略数据 (根据所属的项目)
 const FilterStrategiesReferenceArrayInput = props => {
   const record = props.record;
-
+  
+  const optionRenderer = choice => {
+    const index = record.includeStrategies.findIndex((item) => item === choice.id);
+    return `${index + 1}. ${choice.name}`;
+  }
   return (
     <ReferenceArrayInput
       source="includeStrategies"
@@ -89,8 +93,9 @@ const FilterStrategiesReferenceArrayInput = props => {
       {...props}
       filter={{ projectId: record.projectId }}
       options={{ fullWidth: true }}
+      sort={{ field: 'id', order: 'ASC' }}
     >
-      <SelectArrayInput optionText="name" />
+      <SelectArrayInput optionText={optionRenderer} />
     </ReferenceArrayInput>
   );
 }

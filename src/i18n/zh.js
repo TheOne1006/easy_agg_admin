@@ -45,6 +45,7 @@ export default {
         scopeDay: '区间天数',
         scopeHour: '区间时段',
         includeStrategies: '包含策略',
+        dataMappers: '数据映射'
       }
     },
     Project: {
