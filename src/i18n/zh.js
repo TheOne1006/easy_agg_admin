@@ -33,13 +33,16 @@ export default {
   resources: {
     Report: {
       name: '报表',
+      self: '数据',
+      exportData: '暴露数据',
+      exportDataTable: '数据表格',
       fields: {
         id: 'ID',
         name: '报表名称',
         key: '报表唯一值',
         desc: '描述',
-        createAt: '创建时间',
-        updateAt: '更新时间',
+        createdAt: '创建时间',
+        updatedAt: '更新时间',
         projectId: '所属项目',
         intervalType: '计时类型',
         scopeDay: '区间天数',
@@ -54,8 +57,8 @@ export default {
         id: 'ID',
         name: '项目名称',
         desc: '项目描述',
-        createAt: '创建时间',
-        updateAt: '更新时间',
+        createdAt: '创建时间',
+        updatedAt: '更新时间',
         reports: '相关报表'
       }
     },
@@ -66,8 +69,8 @@ export default {
         name: '策略类型名称',
         key: '策略类型唯一值',
         desc: '描述',
-        createAt: '创建时间',
-        updateAt: '更新时间',
+        createdAt: '创建时间',
+        updatedAt: '更新时间',
       }
     },
     Strategy: {
@@ -86,8 +89,8 @@ export default {
         intervalType: '计时类型',
         groupFields: '分组字段',
         sumField: '求和字段',
-        createAt: '创建时间',
-        updateAt: '更新时间'
+        createdAt: '创建时间',
+        updatedAt: '更新时间'
       }
     },
     Category: {

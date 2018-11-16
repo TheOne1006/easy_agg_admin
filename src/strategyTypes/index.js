@@ -27,8 +27,8 @@ export const StrategyTypeList = props => (
             <TextField source="name" />
             <TextField source="key" />
             <TextField source="desc" options={{ multiLine: true }} />
-            <DateField source="createAt" />
-            <DateField source="updateAt" />
+            <DateField source="createdAt" />
+            <DateField source="updatedAt" />
             <EditButton />
         </Datagrid>
     </List>
@@ -79,8 +79,8 @@ export const StrategyTypeShow = (props) => (
         <SimpleShowLayout>
             <TextField label="name" source="name" />
             <TextField label="desc" source="desc" />
-            <DateField label="createAt" source="createAt" />
-            <DateField label="updateAt" source="updateAt" />
+            <DateField label="createdAt" source="createdAt" />
+            <DateField label="updatedAt" source="updatedAt" />
         </SimpleShowLayout>
     </Show>
 );

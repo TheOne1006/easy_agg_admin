@@ -22,12 +22,14 @@ import {
   SelectInput,
   ReferenceArrayInput, 
   SelectArrayInput,
+  NumberField,
 } from 'react-admin';
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
 
 import JsonEditorInput from '../customInputs/jsonEditorInput';
 import JsonViewField from '../customFields/jsonPreviewField';
+import ExportDataTable from './exportDataTable';
 
 // import ProjectReferenceField from '../referenceFields/projectField';
 
@@ -63,8 +65,8 @@ export const ReportList = props => (
       <ReferenceField source="projectId" reference="Project" >
         <TextField source="name" />
       </ReferenceField>
-      <DateField source="createAt" />
-      <DateField source="updateAt" />
+      <DateField source="createdAt" />
+      <DateField source="updatedAt" />
       <EditButton />
     </Datagrid>
   </List>
@@ -173,14 +175,20 @@ export const ReportCreate = withStyles(stylesCreate)(
 export const ReportShow = (props) => (
   <Show {...props}>
     <TabbedShowLayout>
-      <Tab label="self">
-        <TextField label="name" source="name" />
-        <TextField label="desc" source="desc" />
-        <DateField label="createAt" source="createAt" />
-        <DateField label="updateAt" source="updateAt" />
+      <Tab label="resources.Report.self">
+        <TextField source="name" />
+        <TextField source="desc" />
+        <TextField source="key" />
+        <NumberField source="scopeDay" />
+        <NumberField source="scopeHour" />
+        <DateField source="createdAt" />
+        <DateField source="updatedAt" />
       </Tab>
-      <Tab label="exportData" path="exportData">
+      <Tab label="resources.Report.exportData" path="exportData">
         <JsonViewField source="exportData" />
+      </Tab>
+      <Tab label="resources.Report.exportDataTable" path="exportTable">
+        <ExportDataTable source="exportTable" />
       </Tab>
     </TabbedShowLayout>
   </Show>

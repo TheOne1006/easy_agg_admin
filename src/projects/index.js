@@ -27,8 +27,8 @@ export const ProjectList = props => (
     <Datagrid>
       <TextField source="name" style={{ padding: '0 12px 0 25px' }} />
       <TextField source="desc" options={{ multiLine: true }} />
-      <DateField source="createAt" />
-      <DateField source="updateAt" />
+      <DateField source="createdAt" />
+      <DateField source="updatedAt" />
       <EditButton />
     </Datagrid>
   </List>
@@ -90,8 +90,8 @@ export const ProjectShow = (props) => (
       <Tab label="summary">
         <TextField label="name" source="name" />
         <TextField label="desc" source="desc" />
-        <DateField label="createAt" source="createAt" />
-        <DateField label="updateAt" source="updateAt" />
+        <DateField label="createdAt" source="createdAt" />
+        <DateField label="updatedAt" source="updatedAt" />
       </Tab>
       <Tab label="report" path="report">
         <ReferenceManyField
