@@ -83,10 +83,15 @@ const ReportTitle = translate(({ record, translate }) => (
 // 过滤策略数据 (根据所属的项目)
 const FilterStrategiesReferenceArrayInput = props => {
   const record = props.record;
+
+  console.log(record.includeStrategies);
   
   const optionRenderer = choice => {
-    const index = record.includeStrategies.findIndex((item) => item === choice.id);
-    return `${index + 1}. ${choice.name}`;
+    if (record && record.includeStrategies && record.includeStrategies.length) {
+      const index = record.includeStrategies.findIndex((item) => item === choice.id);
+      return `${index + 1}. ${choice.name}`;
+    }
+    return false;
   }
   return (
     <ReferenceArrayInput
@@ -112,11 +117,14 @@ export const ReportEdit = props => (
         <TextField source="name" />
       </ReferenceField>
 
+      <ReferenceInput label="resources.Report.fields.reportTableConfigId" source="reportTableConfigId" reference="ReportTableConfig">
+        <SelectInput optionText="name" />
+      </ReferenceInput>
+
       <TextInput source="name" />
       <TextInput source="desc" />
 
       <JsonEditorInput source="dataMappers" label="resources.Report.fields.dataMappers" isArray />
-
 
       <FilterStrategiesReferenceArrayInput />
 
@@ -154,6 +162,10 @@ export const ReportCreate = withStyles(stylesCreate)(
           <SelectInput optionText="name" />
         </ReferenceInput>
 
+        <ReferenceInput label="resources.Report.fields.reportTableConfigId" source="reportTableConfigId" reference="ReportTableConfig">
+          <SelectInput optionText="name" />
+        </ReferenceInput>
+
         <JsonEditorInput source="dataMappers" label="resources.Report.fields.dataMappers" isArray />
 
         <FilterStrategiesReferenceArrayInput />
@@ -179,6 +191,11 @@ export const ReportShow = (props) => (
         <TextField source="name" />
         <TextField source="desc" />
         <TextField source="key" />
+
+        <ReferenceInput label="resources.Report.fields.reportTableConfigId" source="reportTableConfigId" reference="ReportTableConfig">
+          <TextField optionText="name" />
+        </ReferenceInput>
+
         <NumberField source="scopeDay" />
         <NumberField source="scopeHour" />
         <DateField source="createdAt" />

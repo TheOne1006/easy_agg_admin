@@ -41,6 +41,7 @@ export default {
         name: '报表名称',
         key: '报表唯一值',
         desc: '描述',
+        reportTableConfigId: '表格设置',
         createdAt: '创建时间',
         updatedAt: '更新时间',
         projectId: '所属项目',
@@ -72,6 +73,21 @@ export default {
         createdAt: '创建时间',
         updatedAt: '更新时间',
       }
+    },
+    ReportTableConfig: {
+      name: '报表表格配置',
+      fields: {
+        id: 'ID',
+        name: '名称',
+        desc: '描述',
+        yAxisName: 'y轴名称',
+        xAxisName: 'x轴名称',
+        yAxisSelectorPaths: 'y轴包含属性',
+        yAxisSelectorOrderBy: 'y轴排序方式',
+        xAxisInfo: 'x轴数据详情',
+        createdAt: '创建时间',
+        updatedAt: '更新时间',
+      },
     },
     Strategy: {
       name: '策略',

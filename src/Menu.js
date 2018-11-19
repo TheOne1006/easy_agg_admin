@@ -16,6 +16,7 @@ const items = [
   { name: 'StrategyType', icon: <LabelIcon /> },
   { name: 'Strategy', icon: <LabelIcon /> },
   { name: 'Report', icon: <LabelIcon /> },
+  { name: 'ReportTableConfig', icon: <LabelIcon /> },
 ];
 
 const styles = {

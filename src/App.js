@@ -11,7 +11,7 @@ import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects
 import { ReportList, ReportEdit, ReportCreate, ReportShow } from './reports';
 import { StrategyTypeList, StrategyTypeEdit, StrategyTypeCreate, StrategyTypeShow } from './strategyTypes';
 import { StrategyList, StrategyEdit, StrategyCreate, StrategyShow } from './strategies';
-
+import { ReportTableConfigList, ReportTableConfigEdit, ReportTableConfigCreate, ReportTableConfigShow } from './reportTableConfigs';
 
 const i18nProvider = locale => {
   if (locale === 'en') {
@@ -79,6 +79,13 @@ class App extends Component {
           edit={StrategyEdit}
           create={StrategyCreate}
           show={StrategyShow}
+        />
+        <Resource
+          name="ReportTableConfig"
+          list={ReportTableConfigList}
+          edit={ReportTableConfigEdit}
+          create={ReportTableConfigCreate}
+          show={ReportTableConfigShow}
         />
       </Admin>
     );
