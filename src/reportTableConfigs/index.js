@@ -64,7 +64,7 @@ export const ReportTableConfigEdit = props => (
       ]} />
       <TextInput source="xAxisName" />
 
-      <JsonEditorInput source="xAxisInfo" label="resources.ReportTableConfig.fields.xAxisInfo" />
+      <JsonEditorInput source="xAxisInfo" label="resources.ReportTableConfig.fields.xAxisInfo" isArray />
 
       <LongTextInput source="desc" options={{ fullWidth: true }} />
     </SimpleForm>
@@ -92,7 +92,7 @@ export const ReportTableConfigCreate = withStyles(stylesCreate)(
         ]} />
         <TextInput source="xAxisName" />
 
-        <JsonEditorInput source="xAxisInfo" label="resources.ReportTableConfig.fields.xAxisInfo" />
+        <JsonEditorInput source="xAxisInfo" label="resources.ReportTableConfig.fields.xAxisInfo" isArray />
 
         <LongTextInput source="desc" options={{ fullWidth: true }} />
       </SimpleForm>
