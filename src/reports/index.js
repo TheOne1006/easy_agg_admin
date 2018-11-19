@@ -192,10 +192,6 @@ export const ReportShow = (props) => (
         <TextField source="desc" />
         <TextField source="key" />
 
-        <ReferenceInput label="resources.Report.fields.reportTableConfigId" source="reportTableConfigId" reference="ReportTableConfig">
-          <TextField optionText="name" />
-        </ReferenceInput>
-
         <NumberField source="scopeDay" />
         <NumberField source="scopeHour" />
         <DateField source="createdAt" />
