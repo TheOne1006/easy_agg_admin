@@ -84,14 +84,14 @@ const ReportTitle = translate(({ record, translate }) => (
 const FilterStrategiesReferenceArrayInput = props => {
   const record = props.record;
 
-  console.log(record.includeStrategies);
+  // console.log(record.includeStrategies);
   
   const optionRenderer = choice => {
-    if (record && record.includeStrategies && record.includeStrategies.length) {
-      const index = record.includeStrategies.findIndex((item) => item === choice.id);
+    const index = record.includeStrategies.findIndex((item) => item === choice.id);
+    if (index > -1) {
       return `${index + 1}. ${choice.name}`;
     }
-    return false;
+    return 'nothing';
   }
   return (
     <ReferenceArrayInput
