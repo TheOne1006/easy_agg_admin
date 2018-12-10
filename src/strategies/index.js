@@ -75,6 +75,7 @@ export const StrategyEdit = props => (
             <ChipInput source="groupFields" label="resources.Strategy.fields.groupFields" />
 
             <TextInput source="sumField" />
+            <TextInput source="fourceField" />
 
             <LongTextInput source="desc" options={{ fullWidth: true }} />
         </SimpleForm>

@@ -102,6 +102,7 @@ export default {
         matchFields: '匹配字段信息',
         uniqueField: '唯一值判断字段',
         incField: '增加值字段',
+        fourceField: '强制值字段',
         intervalType: '计时类型',
         groupFields: '分组字段',
         sumField: '求和字段',
