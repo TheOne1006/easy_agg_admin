@@ -4,6 +4,7 @@ import {
   Datagrid,
   Edit,
   EditButton,
+  ShowButton,
   List,
   DisabledInput,
   DateField,
@@ -29,6 +30,7 @@ export const ProjectList = props => (
       <TextField source="desc" options={{ multiLine: true }} />
       <DateField source="createdAt" />
       <DateField source="updatedAt" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </List>

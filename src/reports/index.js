@@ -13,6 +13,7 @@ import {
   TextInput,
   NumberInput,
   Show,
+  ShowButton,
   ReferenceInput,
   ReferenceField,
   AutocompleteInput,
@@ -23,6 +24,7 @@ import {
   ReferenceArrayInput, 
   SelectArrayInput,
   NumberField,
+  FormDataConsumer,
 } from 'react-admin';
 import Icon from '@material-ui/icons/Details';
 import { withStyles } from '@material-ui/core/styles';
@@ -67,6 +69,7 @@ export const ReportList = props => (
       </ReferenceField>
       <DateField source="createdAt" />
       <DateField source="updatedAt" />
+      <ShowButton />
       <EditButton />
     </Datagrid>
   </List>
@@ -81,7 +84,7 @@ const ReportTitle = translate(({ record, translate }) => (
 ));
 
 // 过滤策略数据 (根据所属的项目)
-const FilterStrategiesReferenceArrayInput = props => {
+const FilterStrategiesReferenceArrayInputWithData = props => {
   const record = props.record;
 
   // console.log(record.includeStrategies);
@@ -91,7 +94,7 @@ const FilterStrategiesReferenceArrayInput = props => {
     if (index > -1) {
       return `${index + 1}. ${choice.name}`;
     }
-    return 'nothing';
+    return `未选择 ${choice.name}`;
   }
   return (
     <ReferenceArrayInput
@@ -99,6 +102,26 @@ const FilterStrategiesReferenceArrayInput = props => {
       reference="Strategy"
       {...props}
       filter={{ projectId: record.projectId }}
+      options={{ fullWidth: true }}
+      sort={{ field: 'id', order: 'ASC' }}
+    >
+      <SelectArrayInput optionText={optionRenderer} />
+    </ReferenceArrayInput>
+  );
+}
+
+const FilterStrategiesReferenceArrayInputWithOutData = ({ formData, ...props }) => {
+  // const record = props.record;
+
+  const optionRenderer = choice => {
+    return `${choice.name}`;
+  }
+  return (
+    <ReferenceArrayInput
+      source="includeStrategies"
+      reference="Strategy"
+      {...props}
+      filter={{ projectId: formData.projectId }}
       options={{ fullWidth: true }}
       sort={{ field: 'id', order: 'ASC' }}
     >
@@ -126,7 +149,7 @@ export const ReportEdit = props => (
 
       <JsonEditorInput source="dataMappers" label="resources.Report.fields.dataMappers" isArray />
 
-      <FilterStrategiesReferenceArrayInput />
+      <FilterStrategiesReferenceArrayInputWithData />
 
       <NumberInput source="scopeDay" />
       <NumberInput source="scopeHour" />
@@ -167,8 +190,14 @@ export const ReportCreate = withStyles(stylesCreate)(
         </ReferenceInput>
 
         <JsonEditorInput source="dataMappers" label="resources.Report.fields.dataMappers" isArray />
-
-        <FilterStrategiesReferenceArrayInput />
+        <FormDataConsumer>
+          {({ formData, ...rest }) =>
+            <FilterStrategiesReferenceArrayInputWithOutData 
+              formData={formData} 
+              {...rest}
+            />
+          }
+        </FormDataConsumer>
 
         <NumberInput source="scopeDay" />
         <NumberInput source="scopeHour" />
@@ -197,11 +226,11 @@ export const ReportShow = (props) => (
         <DateField source="createdAt" />
         <DateField source="updatedAt" />
       </Tab>
-      <Tab label="resources.Report.exportData" path="exportData">
-        <JsonViewField source="exportData" />
-      </Tab>
       <Tab label="resources.Report.exportDataTable" path="exportTable">
         <ExportDataTable source="exportTable" />
+      </Tab>
+      <Tab label="resources.Report.exportData" path="exportData">
+        <JsonViewField source="exportData" />
       </Tab>
     </TabbedShowLayout>
   </Show>
